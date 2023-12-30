@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+   <div id="root"></div> 
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const root = document.querySelector("#root");
+  function App() {
+    const [counter, setcounter] = React.useState(0);
+    /*React.useState()는 두가지의 인수가 들어가는데
+      첫번째는 초기값이 들어간다 (지금 같은 경우에는 counter)
+      두번째는 초기값을 변환해줄 함수가 들어간다(지금 같은 경우에는 setcounter)
+      두 반째의 들어가는 인수는 리렌더링을 자동으로 해준다.
+      고로 우리가 다시 렌더링을 해줄 필요성이 없어진다. 
+      하나의 function이 끌날 때 마다, ReactDOM.render()을 입력해줄 필요가 없어진다.
+    */  
+    const onClick = () => {
+      setcounter(counter + 1);
+    };
+    return(
+      <div>
+        <h3>Total clicks: {counter}</h3>
+        <button onClick={onClick}>Click me</button>
+      </div>
+    )
+  }
+  ReactDOM.render(<App />, root);
+</script>
+</html>
